@@ -12,9 +12,11 @@ const TOKEN_PATH = 'credentials.json';
 var latestUpdate = 2;
 
 module.exports = function (learning, phoneNumber) {
+    var impt_file = process.cwd() + '/functions/client_secret.json';
+
 
     // Load client secrets from a local file.
-    fs.readFile('/Users/i868003/Google Drive/Projects/Coding Practice/learningText/Resources/client_secret.json', (err, content) => {
+    fs.readFile(impt_file, (err, content) => {
     if (err) return console.log('Error loading client secret file:', err);
     // Authorize a client with credentials, then call the Google Sheets API.
         authorize(JSON.parse(content), updateSpreadsheet);

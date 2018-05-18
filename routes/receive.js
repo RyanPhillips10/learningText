@@ -1,5 +1,5 @@
 var express = require('express'),
-    sendText = require('../Functions/sendText'),
+    sendText = require('../functions/sendText'),
     updateGDoc = require('../functions/updateGoogleDoc'),
     cron = require('cron'),
     router = express.Router();

@@ -1,8 +1,6 @@
 
 var express = require('express'),
-    router = express.Router(),
-    sendText = require('../Functions/sendText'),
-    nconf = require('nconf');
+    router = express.Router();
 
 
 /* GET users listing. */
