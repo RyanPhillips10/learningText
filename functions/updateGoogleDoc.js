@@ -97,11 +97,29 @@ module.exports = function (learning, phoneNumber) {
         });
     }
 
+    function calcTime(city, offset) {
+        // create Date object for current location
+        var d = new Date();
+    
+        // convert to msec
+        // subtract local time zone offset
+        // get UTC time in msec
+        var utc = d.getTime() - (d.getTimezoneOffset() * 60000);
+    
+        // create new Date object for different city
+        // using supplied offset
+        var nd = new Date(utc + (3600000*offset));
+    
+        // return time as a string
+        return nd;
+    }
+    
+
     function updateSpreadsheet (auth, learnMessage) {
         const sheets = google.sheets({version: 'v4', auth});
-        var now = new Date();
-        var dateString = dateformat(now, 'mm/dd/yyyy');
-        var timeString = dateformat(now, 'h:MM:ss TT');
+        var tempDate = calcTime ("SF", -7);
+        var dateString = dateformat(tempDate, 'mm/dd/yyyy');
+        var timeString = dateformat(tempDate, 'h:MM:ss TT');
 
         var values = [
         [
